@@ -9,4 +9,5 @@ WORKDIR /app
 COPY . .
 
 RUN poetry config virtualenvs.create false && poetry install
+RUN poetry show
 CMD poetry run aerich upgrade && poetry run python stock_tracker/main.py
