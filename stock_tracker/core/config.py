@@ -5,6 +5,8 @@ from pydantic import AnyHttpUrl, BaseSettings, EmailStr, HttpUrl, validator, Pos
 
 
 class Settings(BaseSettings):
+    API_V1_STR: str = "/api/v1"
+
     REDDIT_CLIENT_ID: str
     REDDIT_CLIENT_SECRET: str
 
