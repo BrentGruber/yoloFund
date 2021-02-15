@@ -9,4 +9,4 @@ WORKDIR /app
 COPY . .
 
 RUN poetry install
-CMD poetry run python stock_tracker/main.py
+CMD poetry run aerich upgrade && poetry run python stock_tracker/main.py
