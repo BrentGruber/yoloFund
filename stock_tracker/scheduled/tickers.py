@@ -1,6 +1,6 @@
 import asyncio
 from models import Exchange, Exchange_Pydantic, Ticker, Ticker_Pydantic, TickerIn_Pydantic
-from scraping.scrape import get_all_tickers
+from scraping.finnhub import get_all_tickers
 
 async def save_ticker(ticker: dict, exchange: int) -> None:
 

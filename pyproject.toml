@@ -8,11 +8,12 @@ authors = ["Brent Gruber <brent.gruber77@gmail.com>"]
 python = "^3.9"
 fastapi = "^0.63.0"
 uvicorn = "^0.13.3"
-praw = "^7.1.4"
 APScheduler = "^3.7.0"
 requests-async = "^0.6.2"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.16.21"}
 aerich = "^0.5.0"
+asyncpraw = "^7.1.1"
+certifi = "^2020.12.5"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

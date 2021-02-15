@@ -2,27 +2,16 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from fastapi import FastAPI
 from tortoise import Tortoise
+import ssl
 import uvicorn
 
 from api.api_v1.api import api_router
 from core.config import settings
-from scraping.scrape import get_all_tickers, get_ticker_mentions
+from scraping.finnhub import get_all_tickers
 from scheduled.tickers import load_tickers
 
 app = FastAPI()
 
-
-from models import Ticker, TickerIn_Pydantic, Ticker_Pydantic
-
-
-@app.get("/ticker-mentions")
-async def check_tickers():
-    tickers = await Ticker_Pydantic.from_queryset(Ticker.all())
-
-    ticker_list = [t.symbol for t in tickers]
-
-    mentions = await get_ticker_mentions("RobinhoodPennyStocks", ticker_list)
-    return zip(*sorted(mentions.items()))
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
