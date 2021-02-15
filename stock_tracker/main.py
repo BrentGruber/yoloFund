@@ -13,7 +13,6 @@ from scheduled.tickers import load_tickers
 
 app = FastAPI()
 
-
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
 TORTOISE_CONFIG = {
@@ -30,6 +29,9 @@ TORTOISE_CONFIG = {
 
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
+    """
+    Adds an X-Process-Time header to response with how long the call took to execute
+    """
     start_time = time.time()
     response = await call_next(request)
     process_time = time.time() - start_time
