@@ -1,6 +1,6 @@
 FROM python:3.9
 
-RUN pip install poetry
+RUN pip3 install poetry
 
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app/stock_tracker
