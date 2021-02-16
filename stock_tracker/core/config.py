@@ -5,6 +5,8 @@ from pydantic import AnyHttpUrl, BaseSettings, EmailStr, HttpUrl, validator, Pos
 
 
 class Settings(BaseSettings):
+    PROJECT_NAME: str = "YoloFund API"
+
     ENVIRONMENT: str = "PRODUCTION"
     API_V1_STR: str = "/api/v1"
     PORT: int = 8000

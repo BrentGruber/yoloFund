@@ -11,7 +11,7 @@ from core.config import settings
 from scraping.finnhub import get_all_tickers
 from scheduled.tickers import load_tickers
 
-app = FastAPI()
+app = FastAPI(title=settings.PROJECT_NAME)
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
@@ -49,7 +49,7 @@ async def startup_event():
 
     scheduler = AsyncIOScheduler()
     print("ADDING JOB TO SCHEDULER")
-    scheduler.add_job(load_tickers, 'interval', minutes=10)
+    scheduler.add_job(load_tickers, 'interval', minutes=1)
     scheduler.start()
 
 if __name__ == "__main__":
