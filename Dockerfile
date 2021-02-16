@@ -8,5 +8,6 @@ ENV PYTHONPATH=/app/stock_tracker
 WORKDIR /app
 COPY . .
 
-RUN poetry config virtualenvs.create false && poetry install
-CMD poetry show && poetry add apscheduler && poetry run aerich upgrade && poetry run python stock_tracker/main.py
+RUN poetry config virtualenvs.create false
+RUN poetry install
+CMD poetry install && poetry run aerich upgrade && poetry run python stock_tracker/main.py
