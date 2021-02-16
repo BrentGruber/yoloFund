@@ -9,4 +9,4 @@ WORKDIR /app
 COPY . .
 
 RUN poetry config virtualenvs.create false && poetry install
-CMD poetry show && poetry run aerich upgrade && poetry run python stock_tracker/main.py
+CMD poetry show && poetry add apscheduler && poetry run aerich upgrade && poetry run python stock_tracker/main.py
